@@ -4,8 +4,10 @@
     grid-template-columns: 1fr 3.5fr;
     overflow: hidden;
     height: 100vh; 
-}
-
+  }
+  body {
+    background-color: #1c3d5a; /* Dark Navy Blue */
+  }
 /* Resume-specific styles */
 .resume-container {
     font-family: Arial, sans-serif;
@@ -16,15 +18,26 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     background-color: #f9f9f9;
-    overflow-y: auto;
-}
+    overflow-y: auto; 
+  }
 
-.header {
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    padding: 2em;
+    height: 100vh;
+    box-sizing: border-box; 
+    color: #e0e6ed;
+    background-color: rgb(53, 86, 114);
+    overflow: hidden; 
+  }
+  .header {
     text-align: center;
     grid-column: span 2;
     margin-bottom: 20px;
-}
-
+  }
 h1, h2 {
     margin: 0;
 }
@@ -87,3 +100,57 @@ li {
 .paragraph {
     font-size: 20px;
 }
+.profile-picture {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #333;
+  }
+  .RouterLink {
+    font-size: 15px;
+    color: #e0e6ed;
+    text-align: left;
+    flex-grow: 1;
+  }
+  .imgContainer{
+    padding-left: 1em;
+  }
+  nav {
+    text-decoration: none;
+    font-size: 12px;
+    color: #e0e6ed; 
+  }
+  nav .RouterLink{
+    text-align: left !important;
+    text-decoration: none;
+    padding: 1em;
+  }
+  nav a.router-link-exact-active {
+    color: #e0e6ed; 
+  }
+  nav a.router-link-exact-active:hover {
+    background-color: transparent;
+  }
+  .rightView{
+    padding: 1em;
+  }
+  .about{
+    display: flex;
+    justify-content: center; /* Horizontally center the items */
+    align-items: center; /* Vertically center the items */
+    flex-direction: column; /* Align items in a column (stack them vertically) */
+    max-height: 100vh;
+    color: #e0e6ed;
+    font-family: 'Roboto', sans-serif;
+  }
+  @media (min-width: 1024px) {
+    .about {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .paragraph{
+    font-size: 20px;
+  }
