@@ -14,20 +14,30 @@ document.querySelectorAll('.RouterLink').forEach(link => {
     });
 });
 
-function loadPage(page) {
-    fetch(page)
-    .then(response => response.text())
-    .then(data => {
-        document.querySelector('.rightView').innerHTML = data;
-    });
-};
 document.addEventListener("DOMContentLoaded", () => {
-    // Fetch the aboutMe data from JSON file
-    fetch('/aboutMe.json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('paragraph1').textContent = data.paragraph1;
-            document.getElementById('paragraph2').textContent = data.paragraph2;
+    // Get all the RouterLink elements
+    const links = document.querySelectorAll('.RouterLink');
+
+    // Loop through each link and add an event listener
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const page = this.getAttribute('href'); // Get the href attribute
+            loadPage(page); // Call function to load page content
+        });
+    });
+
+    // Function to fetch and load page content
+    function loadPage(page) {
+        fetch(page)
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.rightView').innerHTML = html;
         })
-        .catch(error => console.error('Error loading JSON:', error));
+        .catch(error => {
+            console.error('Error loading the page:', error);
+            document.querySelector('.rightView').innerHTML = '<p>Error loading the content.</p>';
+        });
+    }
 });
+
